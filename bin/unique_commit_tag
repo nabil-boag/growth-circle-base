@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+run() {
+  local git_sha1="$(git rev-parse --short=8 HEAD)"
+  local timestamp="$(date +%s)"
+  if [ -z "$CIRCLE_BUILD_NUM" ]; then
+    echo "${git_sha1}_${timestamp}"
+  else
+    echo "${git_sha1}_${CIRCLE_BUILD_NUM}_${timestamp}"
+  fi
+}
+
+run

@@ -1,0 +1,10 @@
+
+export BAR=bbb
+export MYVAR=bbb
+export FOO=bbb
+export BAR=bbb
+export MYVAR=bbb
+export FOO=bbb
+export BAR=bbb
+export MYVAR=bbb
+export FOO=bbb

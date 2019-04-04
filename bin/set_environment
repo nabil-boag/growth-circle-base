@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# This script will produce export statements for the given environment and write
+# them to the $BASH_ENV file in circleci
+#
+# Example:
+#   - Given this bash environment
+#       FOO_prod=bar
+#       FOO_dev=baz
+#       SECRET_prod=secret
+#       URL_dev=myurl
+#   - Running `./set_environment dev` will write
+#       export FOO=baz
+#       export URL=myurl
+
+environment="$1"
+
+echo "Setting up environment..."
+
+env_specific_export=$(env | \
+  grep -E "^[a-zA-Z0-9_\-]+_$environment=.+$" | \
+  sed "s/_$environment//g" | \
+  sed "s/^/export /g")
+
+# print just variable names
+printf "$env_specific_export" | sed -E "s/^export ([^=]+)=.*$/\1/g"
+echo
+
+printf "\n$env_specific_export\n" >> $BASH_ENV

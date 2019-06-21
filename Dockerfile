@@ -1,7 +1,7 @@
 FROM circleci/openjdk:8-jdk
 
-  ARG TERRAFORM_VERSION=0.11.11
-  ARG KONG_PROVIDER_VERSION=4.4.0
+ARG TERRAFORM_VERSION=0.11.11
+ARG KONG_PROVIDER_VERSION=4.4.0
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - && \
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \

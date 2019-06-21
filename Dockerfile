@@ -8,7 +8,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
     sudo apt-get update && \
     sudo apt-get install -y python-pip coreutils jq nodejs yarn && \
-    # sudo apt-get install -y  && \
     sudo pip install awscli && \
     sudo apt-get clean autoclean && \
     sudo apt-get autoremove --yes && \

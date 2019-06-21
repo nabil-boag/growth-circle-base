@@ -1,10 +1,14 @@
 FROM circleci/openjdk:8-jdk
 
-ARG TERRAFORM_VERSION=0.11.11
-ARG KONG_PROVIDER_VERSION=4.4.0
+  ARG TERRAFORM_VERSION=0.11.11
+  ARG KONG_PROVIDER_VERSION=4.4.0
 
-RUN sudo apt-get update && \
-    sudo apt-get install -y python-pip coreutils jq && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - && \
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
+    sudo apt-get update && \
+    sudo apt-get install -y python-pip coreutils jq nodejs && \
+    sudo apt-get install yarn && \
     sudo pip install awscli && \
     sudo apt-get clean autoclean && \
     sudo apt-get autoremove --yes && \
